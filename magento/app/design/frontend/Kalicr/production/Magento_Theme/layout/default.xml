@@ -1,0 +1,12 @@
+<page xmlns="http://www.w3.org/1999/xhtml" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/fossil-black.svg</argument>
+                <argument name="logo_alt" xsi:type="string">Production logo</argument>
+                <argument name="logo_width" xsi:type="string">70</argument>
+                <argument name="logo_height" xsi:type="string">70</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

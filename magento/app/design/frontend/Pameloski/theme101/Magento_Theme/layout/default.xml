@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">Magento_Theme::images/white-bear.svg</argument>
+                <argument name="logo_alt" xsi:type="string">Pameloski</argument>
+                <argument name="logo_width" xsi:type="string">100</argument>
+                <argument name="logo_height" xsi:type="string">30</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="catalog-search-advacned-link" remove="true"/>
+        <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <referenceBlock name="breadcrumbs" remove="true"/>
+        <referenceBlock name="wish-list-link" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
+        <referenceBlock name="customer-account-navigation-wish-list-link" remove="true"/>
+        <referenceBlock name="my-account-link" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceContainer name="header.panel.wrapper" remove="true"/>
+
+        <move element="navigation.sections" destination="header-wrapper" before="minicart"/>
+        <move element="top.search" destination="header-wrapper" before="minicart"/>
+        <move element="top.links" destination="header-wrapper" />
+        <move element="minicart" destination="header-wrapper" before="authorization-link"/>
+    </body>
+</page>

@@ -50,4 +50,18 @@ Thumbs.db
 
 .vscode
 
-magento/*
+magento/vendor/
+magento/generated/
+magento/pub/static/*
+magento/var/*
+magento/node_modules/
+
+magento/app/etc/env.php
+
+!magento/pub/static/,htaccess
+!magento/pub/media/.htaccess
+!magento/var/.htaccess
+
+magento/auth.json
+magento/m2-hotfixes/
+
