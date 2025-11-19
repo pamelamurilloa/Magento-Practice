@@ -69,8 +69,13 @@ sub vcl_recv {
         return (pass);
     }
 
-    # Bypass shopping cart, checkout, search requests and Magento baackend
+    # Bypass shopping cart, checkout, search requests and Magento backend
     if (req.url ~ "/checkout" || req.url ~ "/catalogsearch" || req.url ~ "/admin" ) {
+        return (pass);
+    }
+
+    # Bypass template path hints requests
+    if (req.url ~ "\?templatehints=magento" || req.url ~ "&templatehints=magento") {
         return (pass);
     }
 
