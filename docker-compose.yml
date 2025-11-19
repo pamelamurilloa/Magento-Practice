@@ -1,0 +1,205 @@
+services:
+  nginx:
+    build: .docker/nginx
+    depends_on:
+      php-fpm:
+        condition: service_started
+    networks:
+      magento:
+    ports:
+    #   - 8080:80
+      - 8090:8090
+    volumes:
+      - magento-app:/app
+    
+
+  php-fpm:
+    build: 
+      context: .docker/php/fpm
+      target: fpm 
+    networks:
+      magento:
+    volumes:
+      - magento-app:/app
+      - composer-home:/composer
+    environment:
+      - COMPOSER_HOME=/composer
+      # - PHP_MEMORY_LIMIT=3G
+      # - "PHP_VALUE=memory_limit=3G max_execution_time=18000"
+    command: 
+      - "-R"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+        
+  fpm_xdebug:
+    build: 
+      context: .docker/php/fpm
+      target: xdebug 
+    networks:
+      magento:
+    volumes:
+      - magento-app:/app
+      - composer-home:/composer
+    environment:
+      COMPOSER_HOME: /composer
+      PHP_IDE_CONFIG: "serverName=magento_opensource"
+      PHP_MEMORY_LIMIT: -1
+      # - "PHP_VALUE=memory_limit=3G max_execution_time=18000"
+    command: 
+      - "-R"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+
+  cli:
+    build:
+      context: .docker/php/cli
+      target: cli
+    networks:
+      magento:
+    volumes:
+      - magento-app:/app
+      - composer-home:/composer
+    environment:
+      - COMPOSER_HOME=/composer
+      - COMPOSER_MEMORY_LIMIT=-1
+      - "PHP_VALUE=memory_limit=-1"
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  db:
+    image: mariadb:11.4
+    shm_size: 2gb
+    healthcheck:
+        test: ['CMD', 'mariadb', '--user=root', '--password=magento2', '--execute', 'SELECT 1']
+        interval: 30s
+        timeout: 30s
+        retries: 10
+        start_period: 90s
+    environment:
+        - MYSQL_ROOT_PASSWORD=magento2
+        - MYSQL_DATABASE=magento2
+        - MYSQL_USER=magento2
+        - MYSQL_PASSWORD=magento2
+    ports:
+        - '3306:3306'
+    volumes:
+        - 'magento-db:/var/lib/mysql'
+    networks:
+        magento:
+            aliases:
+                  - db.magento2.docker
+
+  redis:
+    image: valkey/valkey:8.0-alpine3.22
+    healthcheck:
+            test: 'redis-cli ping'
+            interval: 30s
+            retries: 3
+            timeout: 30s
+    networks:
+        magento:
+            aliases:
+                  - redis.magento2.docker
+
+  varnish:
+    build: .docker/varnish
+    networks:
+      magento:
+    ports:
+      - 80:80
+    depends_on:
+      nginx:
+        condition: service_started
+
+      
+
+  opensearch: 
+    image: public.ecr.aws/opensearchproject/opensearch:2.12.0
+    environment:
+      discovery.type: single-node
+#      OPENSEARCH_INITIAL_ADMIN_PASSWORD: QPfuG5uWHQu1ZBQXPiOWxjItAD1sj9v4s
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+      bootstrap.memory_lock: true # Disable JVM heap memory swapping
+      DISABLE_SECURITY_PLUGIN: true
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 65536
+    volumes:
+      - 'opensearch-data:/usr/share/opensearch/data '
+    networks:
+      magento:
+
+  rabbitmq:
+    image: rabbitmq:4.1-management
+    hostname: 'rabbitmq'
+    networks:
+      magento:
+    ports:
+      - "15672:15672"
+    volumes:
+      - 'rabbitmq:/var/lib/rabbitmq'
+    depends_on:
+      php-fpm:
+        condition: service_started
+
+
+  cron:
+    build:
+      context: .docker/php/cli
+      target: cron
+    command:
+      - cron
+      - "-f"
+    networks:
+      magento:
+    volumes:
+      - magento-app:/app
+      - composer-home:/composer
+    environment:
+      - COMPOSER_HOME=/composer
+      - COMPOSER_MEMORY_LIMIT=-1
+      - "PHP_VALUE=memory_limit=-1"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  mailhog:
+    build: .docker/mailhog
+    healthcheck:
+      test: 'curl localhost:8025'
+      interval: 30s
+      retries: 3
+      timeout: 30s
+      start_period: 10s
+    ports:
+        - "8025:8025"
+    networks:
+      magento:
+    depends_on:
+      php-fpm:
+        condition: service_started
+
+
+
+
+volumes:
+  magento-db:
+  magento-app:
+  composer-home:
+  rabbitmq:
+  opensearch-data:
+networks:
+  magento:
