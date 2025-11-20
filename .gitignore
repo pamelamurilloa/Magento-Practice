@@ -53,6 +53,7 @@ Thumbs.db
 magento/vendor/
 magento/generated/
 magento/pub/static/*
+magento/pub/media/catalog/product/cache/
 magento/var/*
 magento/node_modules/
 
