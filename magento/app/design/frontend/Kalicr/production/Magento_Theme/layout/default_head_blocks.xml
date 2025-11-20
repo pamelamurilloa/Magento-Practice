@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <page xmlns="http://www.w3.org/1999/xhtml" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <link src="https://fonts.googleapis.com/css2?family=Dancing+Script" src_type="url" /> 
+        <link src="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap" rel="stylesheet" src_type="url" /> 
         <link src="Magento_Theme::favicon-32x32.png" rel="icon" sizes="32x32" />
     </head>
 </page>
