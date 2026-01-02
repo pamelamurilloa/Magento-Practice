@@ -1,7 +1,20 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Checkout::css/counter.css"/>
+    </head>
     <body>
-        <referenceBlock name="checkout.cart.order.actions" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="customer.name"
+                   template="Magento_Checkout::customer_name.phtml"
+                   before="checkout.cart" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="counter.message"
+                   template="Magento_Checkout::counter.phtml"
+                   after="customer.name" />
+        </referenceContainer>
     </body>
 </page>
-
