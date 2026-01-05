@@ -6,6 +6,7 @@ define([
 
     return function (config, element) {
         var displayElement = $(element).find('.customer-name-display');
+        
         var customer = customerData.get('customer');
 
         var updateGreeting = function (data) {
