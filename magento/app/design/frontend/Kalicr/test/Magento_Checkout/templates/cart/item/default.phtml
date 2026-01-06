@@ -68,6 +68,18 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                     <?= $addInfoBlock->setItem($_item)->toHtml() ?>
                 <?php endif; ?>
             </div>
+        </td>     
+
+        <td class="col custom-attribute" data-th="<?= $block->escapeHtml(__('My Attribute')) ?>">
+            <?php 
+                $attrValue = $product->getData('pamelas_custom_attribute');
+            ?>
+
+            <?php if ($attrValue): ?>
+                <div class="custom-attribute-value">
+                    <?= $block->escapeHtml($attrValue) ?>
+                </div>
+            <?php endif; ?>
         </td>
 
         <?php if ($canApplyMsrp): ?>
@@ -99,20 +111,29 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                 <div class="control qty">
                     <label for="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty">
                         <span class="label"><?= $block->escapeHtml(__('Qty')) ?></span>
-                        <input id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
-                               name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
-                               data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
-                               value="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
-                               type="number"
-                               min="0"
-                               size="4"
-                               step="any"
-                               title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
-                               class="input-text qty"
-                               data-validate="{required:true,'validate-greater-than-zero':true}"
-                               data-item-qty="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
-                               data-role="cart-item-qty"/>
-                    </label>
+                        <select id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
+                        name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
+                        data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
+                        title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
+                        class="input-text qty"
+                        data-validate="{required:true}"
+                        data-role="cart-item-qty">
+                    
+                        <?php 
+                        $currentQty = (int)$block->getQty(); 
+                        for ($i = 1; $i <= 30; $i++): ?>
+                            <option value="<?= $i ?>" <?= ($i === $currentQty) ? 'selected' : '' ?>>
+                                <?= $i ?>
+                            </option>
+                        <?php endfor; ?>
+                        
+                        <?php if ($currentQty > 30): ?>
+                            <option value="<?= $currentQty ?>" selected>
+                                <?= $currentQty ?>
+                            </option>
+                        <?php endif; ?>
+
+                    </select>
                 </div>
             </div>
         </td>
