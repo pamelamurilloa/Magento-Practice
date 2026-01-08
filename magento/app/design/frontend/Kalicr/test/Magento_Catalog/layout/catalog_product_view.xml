@@ -2,5 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <move element="product.info.review" destination="product.info.main" after="product.price.tier" />
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="textArea"
+                   template="Magento_Catalog::text-area.phtml"
+                   after="product.info.addtocart" />
+        </referenceBlock> 
     </body>
 </page>
