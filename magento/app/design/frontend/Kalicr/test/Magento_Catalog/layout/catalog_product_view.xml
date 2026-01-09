@@ -8,5 +8,12 @@
                    template="Magento_Catalog::text-area.phtml"
                    after="product.info.addtocart" />
         </referenceBlock> 
+
+        <referenceBlock name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="banner.image"
+                   template="Magento_Catalog::image.phtml"
+                   after="product.info.main" />
+        </referenceBlock> 
     </body>
 </page>
