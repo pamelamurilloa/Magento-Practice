@@ -1,0 +1,13 @@
+<?php
+/**
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<div class="mypdf">
+<iframe src="<?php echo $block->getViewFileUrl('Magento_Catalog::images/test-pdf.pdf'); ?>" 
+            style="width:100%; height:600px;" frameborder="0">
+        This browser does not support PDFs. Please download the PDF to view it: 
+        <a href="<?php echo $block->getViewFileUrl('Magento_Catalog::images/test-pdf.pdf'); ?>"><?php echo __('Download PDF'); ?></a>
+    </iframe>
+</div>

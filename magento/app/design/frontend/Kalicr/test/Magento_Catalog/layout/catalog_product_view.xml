@@ -15,5 +15,17 @@
                    template="Magento_Catalog::image.phtml"
                    after="product.info.main" />
         </referenceBlock> 
+
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="custom.tab.pdf"
+                   template="Magento_Catalog::custom-tab-pdf.phtml"
+                   group="detailed_info"
+                   after="additional">
+                   <arguments>
+                       <argument name="title" xsi:type="string">Product PDF</argument>
+                   </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>
