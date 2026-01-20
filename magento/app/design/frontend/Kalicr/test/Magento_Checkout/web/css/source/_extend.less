@@ -15,3 +15,36 @@
 .action.primary, .action-primary {
     background-color: #33FF68 !important;
 }
+
+.checkout-payment-method .shipping-information {
+    .lib-css(background, @sidebar__background-color); // Restores grey background
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    // Restore the "Card" look
+    .ship-to, 
+    .shipping-method {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    // Remove border from the last item
+    .shipping-method {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    // Bold Titles (Ship To / Shipping Method)
+    .shipping-information-title {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    // Fix the "Edit" button to float right
+    .action-edit {
+        float: right;
+    }
+}

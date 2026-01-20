@@ -85,8 +85,10 @@
             <p class="minicart empty text" text="getCartParam('cart_empty_message')"></p>
             <div class="actions">
                 <div class="secondary">
-                    <button class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
-                        <span translate="'View and Edit Cart'"></span>
+                    <button>
+                        <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                            <span translate="'View and Edit Cart'"></span>
+                        </a>
                     </button>
                 </div>
             </div>
@@ -95,8 +97,10 @@
 
     <div class="actions" if="getCartParam('summary_count')">
         <div class="secondary">
-            <button class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+            <button>
+            <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
                 <span translate="'View and Edit Cart'"></span>
+            </a>
             </button>
         </div>
     </div>

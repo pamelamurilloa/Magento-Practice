@@ -13,7 +13,7 @@
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template"
                    name="counter.message"
-                   template="Magento_Checkout::counter.phtml"
+                   template="Magento_Theme::counter.phtml"
                    after="customer.name" />
         </referenceContainer>
     </body>

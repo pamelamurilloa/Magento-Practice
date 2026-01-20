@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="counter.message"
+                   template="Magento_Theme::counter.phtml"
+                   before="checkout.root" />
+        </referenceContainer>
         <referenceBlock name="checkout.root">
             <arguments>
                 <argument name="jsLayout" xsi:type="array">
@@ -12,6 +18,64 @@
                                     <item name="template" xsi:type="string">Magento_Checkout/banner</item>
                                     <item name="displayArea" xsi:type="string">banner_area</item>
                                 </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                
+                                <item name="sidebar" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-information" xsi:type="array">
+                                            <item name="componentDisabled" xsi:type="boolean">true</item>
+                                        </item>
+                                    </item>
+                                </item>
+
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        
+                                                        <item name="afterMethods" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                
+                                                                <item name="shipping-information-moved" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Checkout/js/view/shipping-information</item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="sortOrder" xsi:type="string">50</item>
+                                                                    
+                                                                    <item name="children" xsi:type="array">
+                                                                        <item name="ship-to" xsi:type="array">
+                                                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/shipping-information/list</item>
+                                                                            <item name="displayArea" xsi:type="string">ship-to</item>
+                                                                        </item>
+                                                                        <item name="shipping-method" xsi:type="array">
+                                                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/summary/shipping-method</item>
+                                                                            <item name="displayArea" xsi:type="string">shipping-method</item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                                
+                                                            </item>
+                                                        </item>
+                                                        
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                
                             </item>
                         </item>
                     </item>
