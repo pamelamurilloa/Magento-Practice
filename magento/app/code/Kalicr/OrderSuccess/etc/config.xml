@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ordersuccess>
+            <general>
+                <ordersuccess_enable>1</ordersuccess_enable>
+            </general>
+            <ordersuccess_address_section>
+                <ordersuccess_address_billing>1</ordersuccess_address_billing>
+                <ordersuccess_address_shipping>1</ordersuccess_address_shipping>
+                <ordersuccess_address_shipping_method>1</ordersuccess_address_shipping_method>
+                <ordersuccess_address_payment_method>1</ordersuccess_address_payment_method>
+                <registration_enable>1</registration_enable>
+            </ordersuccess_address_section>
+        </ordersuccess>
+    </default>
+</config>

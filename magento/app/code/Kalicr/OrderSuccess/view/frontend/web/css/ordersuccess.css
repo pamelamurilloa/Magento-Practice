@@ -1,0 +1,128 @@
+/* Container for the whole success page custom content */
+.checkout-success {
+    margin-top: 20px;
+}
+
+/* General Layout for 2-column sections (like addresses) */
+.checkout-success .block {
+    margin-bottom: 30px;
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.checkout-success .block:nth-child(even) {
+    float: right;
+}
+
+/* Clear floats after sections */
+.checkout-success .block-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Headings */
+.checkout-success .block-title strong {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+}
+
+/* Address & Information Details */
+.checkout-success .box-content {
+    line-height: 1.6;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Order Items Table Styling */
+.checkout-success .table-order-items {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+.checkout-success .table-order-items thead th {
+    background-color: #f5f5f5;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e1e1e1;
+}
+
+.checkout-success .table-order-items tbody td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #e1e1e1;
+    vertical-align: top;
+}
+
+/* Product Name & SKU */
+.checkout-success .product-item-name {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkout-success .item-sku {
+    color: #777;
+    font-size: 12px;
+}
+
+/* Totals Section (Subtotal, Tax, Shipping, Grand Total) */
+.checkout-success tfoot tr th,
+.checkout-success tfoot tr td {
+    padding: 10px 12px;
+    text-align: right;
+}
+
+.checkout-success tfoot tr.grand-total {
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #f9f9f9;
+}
+
+.checkout-success tfoot tr.grand-total th,
+.checkout-success tfoot tr.grand-total td {
+    border-top: 2px solid #333;
+    padding-top: 20px;
+}
+
+/* CMS Blocks (Top and Bottom) */
+.block-content-cms-top, 
+.block-content-cms-bottom {
+    margin: 20px 0;
+    padding: 20px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .checkout-success .block {
+        width: 100%;
+        float: none;
+    }
+    
+    .checkout-success .table-order-items thead {
+        display: none;
+    }
+    
+    .checkout-success .table-order-items tbody td {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .checkout-success .table-order-items tbody td::before {
+        content: attr(data-th);
+        float: left;
+        font-weight: bold;
+    }
+}
