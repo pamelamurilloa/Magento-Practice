@@ -379,6 +379,7 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Magento_WishlistSampleData' => 1,
         'Kalicr_CustomAttribute' => 1,
+        'Kalicr_CustomCheckoutProcess' => 1,
         'Kalicr_OrderSuccess' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeCustomerBalance' => 1,
