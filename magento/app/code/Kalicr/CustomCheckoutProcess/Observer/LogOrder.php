@@ -20,26 +20,24 @@ class LogOrder implements ObserverInterface
         $order = $observer->getEvent()->getOrder();
 
         if ($order) {
-            $logMessage = sprintf(
-                "--- NEW ORDER ---\nIncrement ID: %s - Customer Email: %s - Total Tax: %s\n",
-                $order->getIncrementId(),
-                $order->getCustomerEmail(),
-                $order->formatPrice($order->getTaxAmount())
-            );
-
-            $logMessage .= "Order items:\n";
+            $items = [];
             foreach ($order->getAllVisibleItems() as $item) {
-                $logMessage .= sprintf(
-                    " - SKU: %s - Price: %s - Qty: %s\n",
-                    $item->getSku(),
-                    $order->formatPrice($item->getPrice()),
-                    $item->getQtyOrdered()
-                );
+                $items[] = [
+                    'sku'   => $item->getSku(),
+                    'price' => strip_tags($order->formatPrice($item->getPrice())), //the logs kept printing with a span because of the price format, but at the same time it didnt make the order without it so this was the solution
+                    'qty'   => (int)$item->getQtyOrdered()
+                ];
             }
 
-            $logMessage .= "-----------------";
+            $logData = [
+                $order->getIncrementId() => [
+                    'customer_email' => $order->getCustomerEmail(),
+                    'total_tax'      => strip_tags($order->formatPrice($order->getTaxAmount())),
+                    'items'          => $items
+                ]
+            ];
 
-            $this->logger->info($logMessage);
+            $this->logger->info(json_encode($logData, JSON_PRETTY_PRINT));
         }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kalicr_CustomCheckoutProcess::test_root"
+             title="PRUEBAS"
+             module="Kalicr_CustomCheckoutProcess"
+             sortOrder="50"
+             resource="Kalicr_CustomCheckoutProcess::test_root"/>
+
+        <add id="Kalicr_CustomCheckoutProcess::order_log"
+             title="Order JSON Logs"
+             module="Kalicr_CustomCheckoutProcess"
+             sortOrder="10"
+             parent="Kalicr_CustomCheckoutProcess::test_root"
+             action="customcheckoutprocess/logs/index"
+             resource="Kalicr_CustomCheckoutProcess::order_log"/>
+    </menu>
+</config>
