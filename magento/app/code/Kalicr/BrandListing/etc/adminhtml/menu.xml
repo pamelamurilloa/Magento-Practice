@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kalicr_BrandListing::brand_listing"
+             title="Brand Listing"
+             module="Kalicr_BrandListing"
+             sortOrder="10"
+             parent="Kalicr_CustomCheckoutProcess::test_root"
+             action="brandlisting/index" 
+             resource="Kalicr_BrandListing::brand_listing"/> <!-- action= route/index, or whichever url was defined in the routes.xml -->
+    </menu>
+</config>

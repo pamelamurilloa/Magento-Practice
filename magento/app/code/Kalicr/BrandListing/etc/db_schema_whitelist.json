@@ -1,0 +1,39 @@
+{
+    "test_brands": {
+        "column": {
+            "brand_id": true,
+            "name": true,
+            "position": true,
+            "is_active": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "kalicr_brandlisting_brand": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "logo": true,
+            "selector_id": true,
+            "position": true,
+            "is_active": true,
+            "category_id": true,
+            "banner": true,
+            "description": true,
+            "province": true,
+            "canton": true,
+            "district": true,
+            "exact_address": true,
+            "latitude": true,
+            "longitude": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
