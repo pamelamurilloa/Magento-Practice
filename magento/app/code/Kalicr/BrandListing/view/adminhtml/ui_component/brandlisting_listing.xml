@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
-        <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">brandlisting_listing.brandlisting_listing_data_source</item>
-            <item name="deps" xsi:type="string">brandlisting_listing.brandlisting_listing_data_source</item>
+        <item name="js_config" xsi:type="array"> <!-- This argument is used to configure the JavaScript component for the listing, it is used to specify the data provider and dependencies -->
+            <item name="provider" xsi:type="string">brandlisting_listing.brandlisting_listing_data_source</item> <!-- This comes from the dataSource name attribute, the provider means the data provider for the listing -->
+            <item name="deps" xsi:type="string">brandlisting_listing.brandlisting_listing_data_source</item> <!-- The deps mean dependencies, ensuring the data source is loaded before the listing -->
         </item>
         <item name="spinner" xsi:type="string">brand_columns</item>
-        <item name="buttons" xsi:type="array">
+        <item name="buttons" xsi:type="array"> <!-- This section defines the buttons available in the listing toolbar -->
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add New Brand</item>
@@ -19,7 +19,7 @@
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">brandlisting_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument> <!-- From the table definition -->
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

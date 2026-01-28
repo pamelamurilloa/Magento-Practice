@@ -6,7 +6,7 @@
              module="Kalicr_BrandListing"
              sortOrder="10"
              parent="Kalicr_CustomCheckoutProcess::test_root"
-             action="brandlisting/index" 
+             action="brandlisting/index/index" 
              resource="Kalicr_BrandListing::brand_listing"/> <!-- action= route/index, or whichever url was defined in the routes.xml -->
     </menu>
 </config>

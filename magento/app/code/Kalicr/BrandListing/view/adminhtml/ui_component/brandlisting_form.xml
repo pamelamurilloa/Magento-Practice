@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">brandlisting_form.brand_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Brand Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    
+    <settings>
+        <buttons>
+            <button name="save" class="Kalicr\BrandListing\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="back" class="Magento\Customer\Block\Adminhtml\Edit\BackButton"/>
+        </buttons>
+        <namespace>brandlisting_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>brandlisting_form.brand_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="brand_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="brandlisting/index/save"/>
+        </settings>
+        
+        <dataProvider class="Kalicr\BrandListing\Model\Brand\DataProvider" name="brand_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general_information">
+        <settings>
+            <label translate="true">General Information</label>
+        </settings>
+        
+        <field name="name" formElement="input">
+            <settings>
+                <label translate="true">Brand Name</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+        
+        <field name="logo" formElement="fileUploader">
+            <settings>
+                <label translate="true">Brand Logo</label>
+            </settings>
+        </field>
+
+        <field name="selector_id" formElement="input">
+            <settings>
+                <label translate="true">Selector Attribute ID</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="position" formElement="input">
+            <settings>
+                <label translate="true">Position</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="is_active" formElement="select">
+            <settings>
+                <label translate="true">Status</label>
+                <dataType>boolean</dataType>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+
+    <fieldset name="category_info">
+        <settings>
+            <label translate="true">Category Information</label>
+        </settings>
+
+        <field name="category_id" formElement="input">
+            <settings>
+                <label translate="true">Category ID</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="banner" formElement="fileUploader">
+            <settings>
+                <label translate="true">Main Banner</label>
+            </settings>
+        </field>
+
+        <field name="description" formElement="textarea">
+            <settings>
+                <label translate="true">Main Description</label>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="address_info">
+        <settings>
+            <label translate="true">Address</label>
+        </settings>
+
+        <field name="province" formElement="input">
+            <settings>
+                <label translate="true">Province</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="canton" formElement="input">
+            <settings>
+                <label translate="true">Canton</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="district" formElement="input">
+            <settings>
+                <label translate="true">District</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="exact_address" formElement="textarea">
+            <settings>
+                <label translate="true">Exact Address</label>
+            </settings>
+        </field>
+
+        <field name="latitude" formElement="input">
+            <settings>
+                <label translate="true">Latitude</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+
+        <field name="longitude" formElement="input">
+            <settings>
+                <label translate="true">Longitude</label>
+                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>
