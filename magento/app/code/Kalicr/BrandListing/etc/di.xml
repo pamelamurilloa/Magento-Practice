@@ -24,4 +24,35 @@
             <argument name="collectionFactory" xsi:type="object">Kalicr\BrandListing\Model\ResourceModel\Brand\CollectionFactory</argument>
         </arguments>
     </type>
+
+    <virtualType name="Kalicr\BrandListing\BrandImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">brand/tmp/logo</argument>
+            <argument name="basePath" xsi:type="string">brand/logo</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Kalicr\BrandListing\Controller\Adminhtml\Index\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Kalicr\BrandListing\BrandImageUploader</argument>
+        </arguments>
+    </type>
+
+    <type name="Kalicr\BrandListing\Controller\Adminhtml\Index\Save">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Kalicr\BrandListing\BrandImageUploader</argument>
+        </arguments>
+    </type>
 </config>

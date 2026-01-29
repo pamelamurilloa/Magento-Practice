@@ -4,14 +4,17 @@ namespace Kalicr\BrandListing\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Kalicr\BrandListing\Model\BrandFactory;
+use Magento\Catalog\Model\ImageUploader;
 
 class Save extends Action
 {
     protected $brandFactory;
+    protected $imageUploader;
 
-    public function __construct(Context $context, BrandFactory $brandFactory)
+    public function __construct(Context $context, BrandFactory $brandFactory, ImageUploader $imageUploader)
     {
         $this->brandFactory = $brandFactory;
+        $this->imageUploader = $imageUploader;
         parent::__construct($context);
     }
 
@@ -21,8 +24,19 @@ class Save extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
 
         if ($data) {
-            // Note: If you are dealing with image uploads, you need special logic here 
-            // to process the file upload before setting data.
+            if (isset($data['logo']) && is_array($data['logo'])) {
+                if (isset($data['logo'][0]['name']) && isset($data['logo'][0]['tmp_name'])) {
+                    $data['logo'] = $data['logo'][0]['name'];
+                    try {
+                        $this->imageUploader->moveFileFromTmp($data['logo']);
+                    } catch (\Exception $e) {
+                    }
+                } elseif (isset($data['logo'][0]['name'])) {
+                    $data['logo'] = $data['logo'][0]['name'];
+                }
+            } else {
+                $data['logo'] = null;
+            }
 
             $id = $this->getRequest()->getParam('entity_id');
             $model = $this->brandFactory->create();
