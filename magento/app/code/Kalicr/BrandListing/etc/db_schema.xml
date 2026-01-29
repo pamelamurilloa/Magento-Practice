@@ -32,4 +32,5 @@
 after adding this db_schema.xml file, run the following commands to apply the schema changes:
 php bin/magento setup:upgrade
 php bin/magento cache:flush
+in this case our database tables have a prefix, for this to work the prefix must be set in the env.php file to '', so, empty, save the whitelist and then change it back before compiling
 -->

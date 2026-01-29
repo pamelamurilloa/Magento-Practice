@@ -1,7 +1,7 @@
 <?php
 namespace Kalicr\BrandListing\Controller\Adminhtml\Index;
 
-use Magento\Backend\App\Action;
+use Magento\Backend\App\Action; //this enforces admin authentication
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\ForwardFactory;
 

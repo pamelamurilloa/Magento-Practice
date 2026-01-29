@@ -90,12 +90,17 @@
             <label translate="true">Category Information</label>
         </settings>
 
-        <field name="category_id" formElement="input">
-            <settings>
-                <label translate="true">Category ID</label>
-                <validation><rule name="required-entry" xsi:type="boolean">true</rule></validation>
-            </settings>
-        </field>
+        <field name="category_id"> <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">Kalicr\BrandListing\Model\Source\Categories</item>
+        
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Category</item>
+                <item name="visible" xsi:type="boolean">true</item>
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="formElement" xsi:type="string">select</item> <item name="source" xsi:type="string">brand</item>
+                <item name="dataScope" xsi:type="string">category_id</item>
+            </item>
+        </argument></field>
 
         <field name="banner" formElement="fileUploader">
             <settings>
