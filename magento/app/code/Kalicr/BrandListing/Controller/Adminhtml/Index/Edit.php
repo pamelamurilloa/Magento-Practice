@@ -23,11 +23,9 @@ class Edit extends Action
 
     public function execute()
     {
-        // 1. Get ID from URL
         $id = $this->getRequest()->getParam('id');
         $model = $this->brandFactory->create();
 
-        // 2. If ID exists, try to load the model
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
@@ -37,11 +35,9 @@ class Edit extends Action
             }
         }
 
-        // 3. Build the Page
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Kalicr_BrandListing::brand_listing');
         
-        // 4. Set the Title dynamically
         $pageTitle = $id ? __('Edit Brand: %1', $model->getName()) : __('New Brand');
         $resultPage->getConfig()->getTitle()->prepend($pageTitle);
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Kalicr\BrandListing\Block\Widget\BrandSlider" id="kalicr_brand_slider">
+        <label translate="true">Brand Listing Slider</label>
+        <description translate="true">Slider showing logos of active brands.</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Widget Title</label>
+            </parameter>
+            
+            <parameter name="brands_limit" xsi:type="text" visible="true" sort_order="20">
+                <label translate="true">Number of Brands to Show</label>
+                <description>Leave empty for all active brands.</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

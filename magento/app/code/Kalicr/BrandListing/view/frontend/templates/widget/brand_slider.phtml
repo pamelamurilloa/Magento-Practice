@@ -1,0 +1,56 @@
+<?php
+/** @var \Kalicr\BrandListing\Block\Widget\BrandSlider $block */
+$brands = $block->getBrands();
+$title = $block->getData('title');
+?>
+
+<?php if ($brands->count()): ?>
+    <div class="brand-widget-container">
+        <?php if ($title): ?>
+            <h2 class="brand-widget-title"><?= $block->escapeHtml($title) ?></h2>
+        <?php endif; ?>
+
+        <div class="brand-slider-content">
+            <?php foreach ($brands as $brand): ?>
+                <div class="brand-item">
+                    <div class="brand-image-wrapper">
+                        <img src="<?= $block->escapeUrl($block->getLogoUrl($brand->getLogo())) ?>" 
+                             alt="<?= $block->escapeHtml($brand->getName()) ?>"
+                             loading="lazy" />
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script>
+        require(['jquery', 'slick'], function($) {
+            $(document).ready(function() {
+                $('.brand-slider-content').slick({
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    arrows: false,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: { slidesToShow: 4 }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: { slidesToShow: 3 }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: { slidesToShow: 2 }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+<?php endif; ?>
