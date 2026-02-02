@@ -58,6 +58,7 @@
                     <item name="formElement" xsi:type="string">fileUploader</item>
                     <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
                     <item name="required" xsi:type="boolean">false</item>
+                    <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="brandlisting/index/upload"/> 
                     </item>

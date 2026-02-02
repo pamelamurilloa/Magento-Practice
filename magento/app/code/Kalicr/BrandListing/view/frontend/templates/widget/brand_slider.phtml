@@ -7,7 +7,9 @@ $title = $block->getData('title');
 <?php if ($brands->count()): ?>
     <div class="brand-widget-container">
         <?php if ($title): ?>
-            <h2 class="brand-widget-title"><?= $block->escapeHtml($title) ?></h2>
+            <h2 class="brand-widget-title">titulo <?= $block->escapeHtml($title) ?></h2>
+        <?php else: ?>
+            <h2 class="brand-widget-title"><?= __('We are authorized dealers of') ?></h2>
         <?php endif; ?>
 
         <div class="brand-slider-content">
@@ -29,12 +31,12 @@ $title = $block->getData('title');
                 $('.brand-slider-content').slick({
                     dots: false,
                     infinite: true,
-                    speed: 300,
+                    speed: 400,
                     slidesToShow: 5,
                     slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 3000,
-                    arrows: false,
+                    arrows: true,
                     responsive: [
                         {
                             breakpoint: 1024,
@@ -53,4 +55,29 @@ $title = $block->getData('title');
             });
         });
     </script>
+
+    <style>
+        .brand-slider-content {
+            
+            .brand-item {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .brand-image-wrapper img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 2px solid #eee;
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
+                object-fit: cover;
+
+            }
+        }
+    </style>
 <?php endif; ?>
