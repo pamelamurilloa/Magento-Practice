@@ -54,6 +54,7 @@ magento/vendor/
 magento/generated/
 magento/pub/static/*
 magento/pub/media/catalog/product/cache/
+magento/pub/media/brand
 magento/var/*
 magento/node_modules/
 
