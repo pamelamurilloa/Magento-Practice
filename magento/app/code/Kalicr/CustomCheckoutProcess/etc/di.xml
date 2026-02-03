@@ -14,4 +14,10 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="kalicr_add_cedula_field" type="Kalicr\CustomCheckoutProcess\Plugin\Checkout\LayoutProcessor"/>
+    </type>
+    <type name="Magento\Checkout\Api\ShippingInformationManagementInterface">
+        <plugin name="kalicr_save_cedula" type="Kalicr\CustomCheckoutProcess\Plugin\Checkout\SaveCedula" />
+    </type>
 </config>
