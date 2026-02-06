@@ -6,13 +6,17 @@ $title = $block->getData('title');
 
 <?php if ($brands->count()): ?>
     <div class="brand-widget-container">
-        <?php if ($title): ?>
-            <h2 class="brand-widget-title">titulo <?= $block->escapeHtml($title) ?></h2>
-        <?php else: ?>
-            <h2 class="brand-widget-title"><?= __('We are authorized dealers of') ?></h2>
-        <?php endif; ?>
+        <h2 class="brand-widget-title">
+            <?= $title ? $block->escapeHtml($title) : __('We are authorized dealers of') ?>
+        </h2>
 
-        <div class="brand-slider-content">
+        <div class="brand-slider-content" 
+             data-mage-init='{
+                "Kalicr_BrandListing/js/brand-slider": {
+                    "slidesToShow": 5,
+                    "autoplay": true
+                }
+             }'>
             <?php foreach ($brands as $brand): ?>
                 <div class="brand-item">
                     <div class="brand-image-wrapper">
@@ -24,60 +28,29 @@ $title = $block->getData('title');
             <?php endforeach; ?>
         </div>
     </div>
-
-    <script>
-        require(['jquery', 'slick'], function($) {
-            $(document).ready(function() {
-                $('.brand-slider-content').slick({
-                    dots: false,
-                    infinite: true,
-                    speed: 400,
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    arrows: true,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: { slidesToShow: 4 }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: { slidesToShow: 3 }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: { slidesToShow: 2 }
-                        }
-                    ]
-                });
-            });
-        });
-    </script>
-
-    <style>
-        .brand-slider-content {
-            
-            .brand-item {
-                padding: 10px;
-                text-align: center;
-            }
-
-            .brand-image-wrapper img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                overflow: hidden;
-                border: 2px solid #eee;
-                
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #fff;
-                object-fit: cover;
-
-            }
-        }
-    </style>
 <?php endif; ?>
+
+<style>
+    .brand-slider-content {
+                
+        .brand-item {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .brand-image-wrapper img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #eee;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            object-fit: cover;
+
+        }
+    }
+</style>
