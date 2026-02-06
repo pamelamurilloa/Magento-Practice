@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var \Magento\Catalog\Block\Category\View $block
+ */
+
+$category = $block->getCurrentCategory();
+?>
+
+<div class="message counter-wrapper">
+    <span class="toolbar-number">
+        <?php 
+            echo $category ? $category->getProductCount() : '0'; 
+        ?>
+    </span> 
+    Products Found
+</div>

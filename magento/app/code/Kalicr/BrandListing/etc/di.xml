@@ -57,4 +57,8 @@
             <argument name="imageUploader" xsi:type="object">Kalicr\BrandListing\BrandImageUploader</argument>
         </arguments>
     </type>
+
+    <preference for="Kalicr\BrandListing\Api\BrandManagementInterface" type="Kalicr\BrandListing\Model\BrandManagement"/>
+    <preference for="Kalicr\BrandListing\Api\BrandRepositoryInterface" type="Kalicr\BrandListing\Model\BrandManagement"/>
+    <preference for="Kalicr\BrandListing\Api\Data\BrandInterface" type="Kalicr\BrandListing\Model\Brand"/>
 </config>
